@@ -1,0 +1,23 @@
+<div class="panel panel-info">
+<div class="panel-heading">Add New SubCategory</div>
+<div class="panel-body">
+
+<%= form_for @subcategory do |f| %>
+ <% if @subcategory.errors.any? %>
+  <ol>
+   <% @subcategory.errors.full_messages.each do |msg| %>
+       <li> <%= msg %></li>
+    <% end %>
+  </ol>
+<% end %>
+ <div class="form-group" %>
+	 <%= f.label :Name %>: 
+	 <%= f.text_field :name %><br/>
+	 <%= f.label :Category %>:
+	 <%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category" %><br/>
+ </div>
+ <button type="save" class="btn btn-success btn-cons">Save</button>
+ <%= link_to 'Cancel', sub_categories_path, :class => "btn btn-danger btn-cons" %>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,20 @@
+<%= @category.name %>
+<%# products = Product.where('category_id = ?',@category.id) %> 
+<%#= @products.count %>
+<%#= @category.name %>
+<%= link_to "Edit",edit_category_path(@category.id) %>|
+<%= link_to "Destroy",category_path(@category.id),method: :delete ,data: {confirm:"Are you sure?"} %> <br/>
+
+
+<%  @category.sub_categories.each do |sub_category| %>
+  <%= link_to sub_category.name.upcase,sub_category_path(sub_category.id)%>(<%= sub_category.products.size %>)
+  <ul>
+  <% sub_category.products.each do |product| %>
+  <li> <%= link_to product.name,product_path(product.id) %> </li>
+  <% end %>
+  </ul>
+<% end %>
+
+	
+
+<%= link_to "Back" ,categories_path %>

@@ -1,0 +1,25 @@
+<div class="panel panel-info">
+<div class="panel-heading">Add New Category</div>
+<div class="panel-body">
+
+<%= form_for @category do |f| %>
+<% if @category.errors.any? %>
+   <ul>
+   <% @category.errors.full_messages.each do |msg| %>
+   <h2> Errors:</h2>
+   <li> <%= msg%> </li>
+   <% end %>
+   </ul>
+<% end %>
+ <div class="form-group">
+<%= f.label :name %>:
+<%=f.text_field :name,:class =>'form-control' %> </br>
+</div>
+<button type="save" class="btn btn-success btn-cons">Save</button>
+<%= link_to 'Cancel', categories_path, :class => "btn btn-danger btn-cons" %>
+<%#= f.submit %>
+<% end %>
+</div>
+</div>
+ 
+ 

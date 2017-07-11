@@ -1,0 +1,23 @@
+<h2> Listing Products </h2>
+<% if user_signed_in? && current_user.is_admin %>
+<%= link_to "Add New Product",new_product_path, class: "btn btn-primary" %>
+<% end %>
+	<% if @products.empty? %>
+	<p> No Record Found </p>
+	<% else %>
+<ol>
+
+<% @products.each do |product| %>
+<li>  <%#= Category.find(product.category_id).name %>
+      <%= product.category.name %>
+ 
+      <%= link_to product.name, product_path(product.id)%>
+      <%= product.price %>
+      <%= product.category_id %>
+      <%#= link_to "Show",product_path(product.id) %>
+    
+     </li>
+     <% end %>
+     </ol>
+     <% end %>
+

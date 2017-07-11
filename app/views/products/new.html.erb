@@ -1,0 +1,61 @@
+<div class="panel panel-info">
+<div class="panel-heading">Creating new Product</div>
+<div class="panel-body">
+
+
+<%= form_for @product do |f| %>
+<% if @product.errors.any? %>
+<ol>
+   <% @product.errors.full_messages.each do |msg| %>
+      <li> <%= msg %></li>
+   <% end %>
+   </ol>
+<% end %>
+
+<div class = "form-group" >
+<%= f.label :Category_id %>
+<%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category",:class => 'form-control' %>
+</div>
+
+<div class = "form-group" >
+<%= f.label :sub_category_id %>
+<%= f.collection_select :sub_category_id,SubCategory.all,:id,:name,prompt:"Select subcategory" ,:class => 'form-control'%>
+</div>
+
+<div class = "form-group" >
+  <%= f.label :Name %>
+  <%= f.text_field :name,:class =>'form-control' %>
+  </div>
+
+  <div class = "form-group">
+  <%= f.label :Description %>
+  <%= f.text_area :description,rows:10,cols:34 ,:class => 'form-control'%>
+  </div> <!--colon after is an optional-->
+
+  <div class = "form-group">
+  <%= f.label :Price %><br>
+  <%= f.text_field :price , :class=> 'form-control'%> 
+  </div>
+
+  <div class = "form-group">
+  <%= f.label :Stock %><br/>
+  <%= f.text_field :stock,:class => 'form-control' %>
+  </div>
+
+  <div class = "form-group">
+  <%= f.label :Cod_eligibility %>
+  <%= f.check_box :cod_eligibility,:class => 'form-control'%>
+  </div>
+
+  <div class = "form-group" %>
+  <%= f.label :Image_url %>
+  <%= f.text_field :image_url,:class => 'form-control'%>
+  </div>
+
+<button type="save" class="btn btn-success btn-cons">Save</button>
+<%= link_to 'Cancel', products_path, :class => "btn btn-danger btn-cons" %>
+  <%#= f.submit %>
+  
+<% end %>
+</div>
+</div>

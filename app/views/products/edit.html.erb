@@ -1,0 +1,28 @@
+<h2> Updating new Product </h2>
+<%= form_for @product do |f| %>
+<% if @product.errors.any? %>
+<ul>
+  <% @product.errors_full_messages.each do |msg| %>
+     <li><%= msg %></li>
+  <% end %>
+  <ul>
+<% end %>
+<%= f.label :Category_id %>
+<%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category" %><br/>
+<%= f.label :sub_category_id %><br/>
+<%= f.collection_select :sub_category_id,SubCategory.all,:id,:name,prompt:"Select subcategory" %><br/>
+  <%= f.label :Name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :Description %>
+  <%= f.text_field :description %><br>
+  <%= f.label :Price %>
+  <%= f.text_field :price %> <br>
+  
+  <%= f.label :Stock %>
+  <%= f.text_field :stock %><br>
+  <%= f.label :Cod_eligibility %>
+  <%= f.text_field :cod_eligibility %><br>
+
+  <%= f.submit %>
+
+<% end %>
