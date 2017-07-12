@@ -10,7 +10,22 @@
 <% end %>
 <%= f.label :name %>
 <%=f.text_field :name %> </br>
+<p id="name"></p> 
 
 <%= f.submit %> | <%= link_to "Back",category_path(@category.id) %> | <%= link_to "List" , categories_path %>
 
 <% end %>
+
+<script>
+	var category_nameHandle = document.getElementById('category_name');
+	var nameHandle = document.getElementById('name');
+	
+	category_nameHandle.onblur = function(){
+		if(category_nameHandle.value.length == 0){
+			nameHandle.innerHTML = "cannot be blank";
+			} else {
+				nameHandle = ""	
+		}
+	}
+		
+</script>

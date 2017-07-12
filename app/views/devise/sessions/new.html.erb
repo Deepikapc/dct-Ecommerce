@@ -3,14 +3,14 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true  %><p id="details"></p>
   </div>
 
-  <div class="field">
+  <div class="field">  
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off" %><p id="passworddetails"></p>
   </div>
-
+ 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -24,3 +24,27 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+  var user_emailHandle = document.getElementById('user_email');
+  var user_passwordHandle = document.getElementById('user_password');
+  var detailsHandle = document.getElementById('details');
+  var passworddetailsHandle = document.getElementById('passworddetails');
+
+
+  user_emailHandle.onblur = function(){
+    if(user_emailHandle.value.length == 0){
+      detailsHandle.innerHTML = "Cannot be blank";
+
+    } else {
+      detailsHandle = "";
+    }
+  }
+  user_passwordHandle.onblur = function(){
+    if(user_passwordHandle.value.length == 0){
+      passworddetailsHandle.innerHTML = "Cannot be blank";
+    } else {
+      passworddetailsHandle = "";
+    }
+  }
+</script>

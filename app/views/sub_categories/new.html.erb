@@ -12,7 +12,9 @@
 <% end %>
  <div class="form-group" %>
 	 <%= f.label :Name %>: 
-	 <%= f.text_field :name %><br/>
+	 <%= f.text_field :name %>
+	 <p id="name"></p> 
+
 	 <%= f.label :Category %>:
 	 <%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category" %><br/>
  </div>
@@ -21,3 +23,17 @@
 <% end %>
 </div>
 </div>
+
+<script>
+	var sub_category_nameHandle = document.getElementById('sub_category_name');
+	var nameHandle = document.getElementById('name');
+	
+	sub_category_nameHandle.onblur = function(){
+		if(sub_category_nameHandle.value.length == 0){
+			nameHandle.innerHTML = "cannot be blank";
+			} else {
+				nameHandle = ""	
+		}
+	}
+		
+</script>

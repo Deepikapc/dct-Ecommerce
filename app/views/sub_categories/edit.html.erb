@@ -10,13 +10,26 @@
 <% end %>
 	 <%= f.label :Name %>: 
 	 <%= f.text_field :name %><br/>
+	 <p id="name"></p> 
 	 <%= f.label :Category %>
 	 <%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category" %><br/>
 	 <%= f.submit %>
 <% end %>
 <%= link_to "Back",sub_category_path(@subcategory.id) %>
 
-
+<script>
+	var sub_category_nameHandle = document.getElementById('sub_category_name');
+	var nameHandle = document.getElementById('name');
+	
+	sub_category_nameHandle.onblur = function(){
+		if(sub_category_nameHandle.value.length == 0){
+			nameHandle.innerHTML = "cannot be blank";
+			} else {
+				nameHandle = ""	
+		}
+	}
+		
+</script>
 
 
 

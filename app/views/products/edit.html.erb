@@ -1,28 +1,115 @@
-<h2> Updating new Product </h2>
+<div class="panel panel-info">
+<div class="panel-heading">Updating Existing Product</div>
+<div class="panel-body">
+
+
 <%= form_for @product do |f| %>
 <% if @product.errors.any? %>
-<ul>
-  <% @product.errors_full_messages.each do |msg| %>
-     <li><%= msg %></li>
-  <% end %>
-  <ul>
+<ol>
+   <% @product.errors.full_messages.each do |msg| %>
+      <li> <%= msg %></li>
+   <% end %>
+   </ol>
 <% end %>
+
+<div class = "form-group" >
 <%= f.label :Category_id %>
-<%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category" %><br/>
-<%= f.label :sub_category_id %><br/>
-<%= f.collection_select :sub_category_id,SubCategory.all,:id,:name,prompt:"Select subcategory" %><br/>
+<%= f.collection_select :category_id,Category.all,:id,:name,prompt:"Select category",:class => 'form-control' %>
+</div>
+
+<div class = "form-group" >
+<%= f.label :sub_category_id %>
+<%= f.collection_select :sub_category_id,SubCategory.all,:id,:name,prompt:"Select subcategory" ,:class => 'form-control'%>
+</div>
+
+<div class = "form-group" >
   <%= f.label :Name %>
-  <%= f.text_field :name %><br>
+  <%= f.text_field :name,:class =>'form-control' %>
+  <p id= "name"></p>
+  </div>
+
+  <div class = "form-group">
   <%= f.label :Description %>
-  <%= f.text_field :description %><br>
-  <%= f.label :Price %>
-  <%= f.text_field :price %> <br>
-  
-  <%= f.label :Stock %>
-  <%= f.text_field :stock %><br>
+  <%= f.text_area :description,rows:10,cols:34 ,:class => 'form-control'%>
+  <p id = "description"></p>
+  </div> 
+
+  <div class = "form-group">
+  <%= f.label :Price %><br>
+  <%= f.text_field :price , :class=> 'form-control'%> 
+  <p id= "price"></p>
+  </div>
+
+  <div class = "form-group">
+  <%= f.label :Stock %><br/>
+  <%= f.text_field :stock,:class => 'form-control' %>
+  <p id="stock"></p>
+  </div>
+
+  <div class = "form-group">
   <%= f.label :Cod_eligibility %>
-  <%= f.text_field :cod_eligibility %><br>
+  <%= f.check_box :cod_eligibility,:class => 'form-control'%>
+  </div>
 
-  <%= f.submit %>
+  <div class = "form-group" %>
+  <%= f.label :Image_url %>
+  <%= f.text_field :image_url,:class => 'form-control'%>
+  </div>
 
+<button type="save" class="btn btn-success btn-cons">Save</button>
+<%= link_to 'Cancel', products_path, :class => "btn btn-danger btn-cons" %>
+  <%#= f.submit %>
+  
 <% end %>
+</div>
+</div>
+
+<script>
+  var product_nameHandle = document.getElementById('product_name');
+  var nameHandle = document.getElementById('name');
+
+  var product_descriptionHandle = document.getElementById('product_description');
+  var descriptionHandle = document.getElementById('description');
+
+  var product_priceHandle = document.getElementById('product_price');
+  var priceHandle = document.getElementById('price');
+
+  var product_stockHandle = document.getElementById('product_stock');
+  var stockHandle = document.getElementById('stock');
+
+    product_nameHandle.onblur = function(){
+      if(product_nameHandle.value.length == 0){
+        nameHandle.innerHTML = "cannot be blank"
+      }else{
+        nameHandle = ""
+      
+      }
+    }
+    product_descriptionHandle.onblur = function(){
+      if(product_descriptionHandle.value.length == 0){
+        descriptionHandle.innerHTML = "cannot be blank"
+      }
+      else{
+        descriptionHandle= ""
+      
+      }
+    }
+
+    product_priceHandle.onblur = function(){
+      if(product_priceHandle.value.length == 0){
+        priceHandle.innerHTML = "cannot be blank";
+      }else{
+        priceHandle = ""
+      }
+    }
+
+    product_stockHandle.onblur = function(){
+      if(product_stockHandle.value.length == 0){
+        stockHandle.innerHTML = "Cannot be blank";
+       } else{
+        stockHandle = ""
+
+    }
+      }
+
+</script>

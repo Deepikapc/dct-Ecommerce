@@ -25,21 +25,25 @@
 <div class = "form-group" >
   <%= f.label :Name %>
   <%= f.text_field :name,:class =>'form-control' %>
+  <p id= "name"></p>
   </div>
 
   <div class = "form-group">
   <%= f.label :Description %>
   <%= f.text_area :description,rows:10,cols:34 ,:class => 'form-control'%>
-  </div> <!--colon after is an optional-->
+  <p id = "description"></p>
+  </div> 
 
   <div class = "form-group">
   <%= f.label :Price %><br>
   <%= f.text_field :price , :class=> 'form-control'%> 
+  <p id= "price"></p>
   </div>
 
   <div class = "form-group">
   <%= f.label :Stock %><br/>
   <%= f.text_field :stock,:class => 'form-control' %>
+  <p id="stock"></p>
   </div>
 
   <div class = "form-group">
@@ -59,3 +63,53 @@
 <% end %>
 </div>
 </div>
+
+<script>
+  var product_nameHandle = document.getElementById('product_name');
+  var nameHandle = document.getElementById('name');
+
+  var product_descriptionHandle = document.getElementById('product_description');
+  var descriptionHandle = document.getElementById('description');
+
+  var product_priceHandle = document.getElementById('product_price');
+  var priceHandle = document.getElementById('price');
+
+  var product_stockHandle = document.getElementById('product_stock');
+  var stockHandle = document.getElementById('stock');
+
+    product_nameHandle.onblur = function(){
+      if(product_nameHandle.value.length == 0){
+        nameHandle.innerHTML = "cannot be blank"
+      }else{
+        nameHandle = ""
+      
+      }
+    }
+    product_descriptionHandle.onblur = function(){
+      if(product_descriptionHandle.value.length == 0){
+        descriptionHandle.innerHTML = "cannot be blank"
+      }
+      else{
+        descriptionHandle= ""
+      
+      }
+    }
+
+    product_priceHandle.onblur = function(){
+      if(product_priceHandle.value.length == 0){
+        priceHandle.innerHTML = "cannot be blank";
+      }else{
+        priceHandle = ""
+      }
+    }
+
+    product_stockHandle.onblur = function(){
+      if(product_stockHandle.value.length == 0){
+        stockHandle.innerHTML = "Cannot be blank";
+       } else{
+        stockHandle = ""
+
+    }
+      }
+
+</script>

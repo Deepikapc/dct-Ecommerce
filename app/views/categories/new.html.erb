@@ -13,7 +13,8 @@
 <% end %>
  <div class="form-group">
 <%= f.label :name %>:
-<%=f.text_field :name,:class =>'form-control' %> </br>
+<%=f.text_field :name,:class =>'form-control' %>
+<p id="name"></p> 
 </div>
 <button type="save" class="btn btn-success btn-cons">Save</button>
 <%= link_to 'Cancel', categories_path, :class => "btn btn-danger btn-cons" %>
@@ -21,5 +22,19 @@
 <% end %>
 </div>
 </div>
+
+<script>
+	var category_nameHandle = document.getElementById('category_name');
+	var nameHandle = document.getElementById('name');
+	
+	category_nameHandle.onblur = function(){
+		if(category_nameHandle.value.length == 0){
+			nameHandle.innerHTML = "cannot be blank";
+			} else {
+				nameHandle = ""	
+		}
+	}
+		
+</script>
  
  
